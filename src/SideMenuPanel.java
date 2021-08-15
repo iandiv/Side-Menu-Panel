@@ -122,7 +122,7 @@ public class SideMenuPanel {
 
                             if (side instanceof Container) {
                                 for (Component child : ((Container) side).getComponents()) {
-                                    child.setSize(new Dimension(maxWidth, child.getHeight()));
+                                    child.setSize(new Dimension(maxWidth+minWidth, child.getHeight()));
                                 }
                             }
                             if (frame.getWidth() >= responsiveMinWidth) {
@@ -162,7 +162,7 @@ public class SideMenuPanel {
 
                             if (side instanceof Container) {
                                 for (Component child : ((Container) side).getComponents()) {
-                                    child.setSize(new Dimension(maxWidth, child.getHeight()));
+                                    child.setSize(new Dimension(maxWidth+minWidth, child.getHeight()));
                                 }
                             }
                             if (frame.getWidth() >= responsiveMinWidth) {
