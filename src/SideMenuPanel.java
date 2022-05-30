@@ -1,22 +1,22 @@
 
+package ian;
+
 // @author ian
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class SideMenuPanel {
 
+    private GroupLayout gl;
     private int x = 0;
     private final int a = 0;
     private int minWidth = 60;
@@ -27,6 +27,15 @@ public class SideMenuPanel {
     private int speed = 2;
     private int responsiveMinWidth = 600;
     private final JFrame frame;
+    private boolean isOpen = false;
+
+    public boolean getIsOpen() {
+        return isOpen;
+    }
+
+    public void setIsOpen(boolean isOpen) {
+        this.isOpen = isOpen;
+    }
 
     public int getResponsiveMinWidth() {
         return responsiveMinWidth;
@@ -117,12 +126,11 @@ public class SideMenuPanel {
                                 i = 0;
                             }
                             TimeUnit.NANOSECONDS.sleep(1);
-
                             side.setSize(new Dimension(minWidth + i, main.getHeight()));
 
                             if (side instanceof Container) {
                                 for (Component child : ((Container) side).getComponents()) {
-                                    child.setSize(new Dimension(maxWidth+minWidth, child.getHeight()));
+                                    child.setSize(new Dimension(maxWidth + minWidth, child.getHeight()));
                                 }
                             }
                             if (frame.getWidth() >= responsiveMinWidth) {
@@ -157,12 +165,12 @@ public class SideMenuPanel {
                             if (maxWidth - b == i) {
                                 i += b;
                             }
-                            
+
                             side.setSize(new Dimension(minWidth + i, main.getHeight()));
 
                             if (side instanceof Container) {
                                 for (Component child : ((Container) side).getComponents()) {
-                                    child.setSize(new Dimension(maxWidth+minWidth, child.getHeight()));
+                                    child.setSize(new Dimension(maxWidth + minWidth, child.getHeight()));
                                 }
                             }
                             if (frame.getWidth() >= responsiveMinWidth) {
@@ -188,4 +196,43 @@ public class SideMenuPanel {
 
     }
 
+    public void closeMenu() {
+        if (getIsOpen()) {
+            side.setSize(new Dimension(minWidth, side.getHeight()));
+            main.setLocation(minWidth, main.getY());
+            setGLSize(minWidth);
+//            close();
+            isOpen = false;
+            x = 0;
+        }
+    }
+
+    public void openMenu() {
+        if (!getIsOpen()) {
+            side.setSize(new Dimension(minWidth + maxWidth, side.getHeight()));
+            main.setLocation(minWidth + maxWidth, main.getY());
+            setGLSize(minWidth + maxWidth);
+            x = maxWidth;
+            isOpen = true;
+        }
+    }
+
+    private void setGLSize(int size) {
+        gl = new javax.swing.GroupLayout(main.getParent());
+        main.getParent().setLayout(gl);
+        gl.setHorizontalGroup(
+                gl.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(gl.createSequentialGroup()
+                                .addComponent(side, javax.swing.GroupLayout.PREFERRED_SIZE, size, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, 0))
+        );
+        gl.setVerticalGroup(
+                gl.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(side, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                        .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+    }
 }
+
