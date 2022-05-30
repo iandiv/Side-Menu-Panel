@@ -21,13 +21,14 @@ Side Menu for Java Swing Application.
 ```Java
 
 
- SidemenuPanel sp = new Sidemenupanel(this); 
- sp.setMain(mainpanel); 
- sp.setSide(sidebar); 
- sp.setMinWidth(55); 
- sp.setMaxWidth(150); 
- sp.setMainAnimation(true); 
- sp.setSpeed(4); 
- sp.setResponsiveMinWidth(600);
+ SidemenuPanel sp;
+ sp = new SideMenuPanel(this);
+        sp.setMain(mainPanel);
+        sp.setSide(sidebar);
+        sp.setMinWidth(55);
+        sp.setMaxWidth(150);
+        sp.setMainAnimation(true);
+        sp.setSpeed(4);
+        sp.setResponsiveMinWidth(600);
  ```
 (c) 2020-2021 | IanDiv
