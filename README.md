@@ -14,7 +14,8 @@ Side Menu for Java Swing Application.
 |  setMaxWidth()    | set Sidebar Maximum Width   |
 |  setMainAnimation()    | enable/disable Main Animation    |
 |  setSpeed()    | set Sliding Animation Speed |
-
+|  openMenu()    | open Menu without animation  |
+|  closeMenu()    | close Menu without animation  |
 
 
 # Usage
