@@ -22,32 +22,33 @@ Side Menu for Java Swing Application.
 # Usage
 ```Java
  SidemenuPanel sp;
- sp = new SideMenuPanel(this);
-        sp.setMain(mainPanel);
-        sp.setSide(sidebar);
-        sp.setMinWidth(55);
-        sp.setMaxWidth(150);
-        sp.setMainAnimation(true);
-        sp.setSpeed(4);
-        sp.setResponsiveMinWidth(600);
+       sp = new SideMenuPanel(this);
+       sp.setMain(mainPanel);
+       sp.setSide(sidebar);
+       sp.setMinWidth(55);
+       sp.setMaxWidth(150);
+       sp.setMainAnimation(true);
+       sp.setSpeed(4);
+       sp.setResponsiveMinWidth(600);
  ```
 
-<aside>
-       Tip: If you call `setMain(null)`, the main panel will not shift during sidebar animation, this is ideal for fixed UIs.
+----
 
-       *example:*
-       ```Java
-       SidemenuPanel sp;
-              sp = new SideMenuPanel(this);
-              sp.setMain(null);
-              sp.setSide(sidebar);
-              sp.setMinWidth(55);
-              sp.setMaxWidth(150);
-              sp.setMainAnimation(true);
-              sp.setSpeed(4);
-       ```
+Tip: If you call `setMain(null)`, the main panel will not shift during sidebar animation, this is ideal for fixed UIs.
 
-       In this case `sp.setResponsiveMinWidth(...)` will be ignore because there is no main panel to shift
-</aside>
+*example:*
+```Java
+SidemenuPanel sp;
+       sp = new SideMenuPanel(this);
+       sp.setMain(null);
+       sp.setSide(sidebar);
+       sp.setMinWidth(55);
+       sp.setMaxWidth(150);
+       sp.setMainAnimation(true);
+       sp.setSpeed(4);
+```
+
+In this case `sp.setResponsiveMinWidth(...)` will be ignore because there is no main panel to shift
+
 
 (c) 2020-2021 | IanDiv
