@@ -1,11 +1,11 @@
-
-import ian.SideMenuPanel;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+import sidebar.SideMenuPanel;
+
 /**
  *
  * @author ian
@@ -17,15 +17,27 @@ public class Test extends javax.swing.JFrame {
     public Test() {
 
         initComponents();
+
+        // Example 1 - With main panel shift
         sp = new SideMenuPanel(this);
         sp.setMain(mainPanel);
         sp.setSide(sidebar);
         sp.setMinWidth(55);
         sp.setMaxWidth(150);
-        sp.setMainAnimation(true);
+        sp.setMainAnimationEnabled(true);
         sp.setSpeed(4);
         sp.setResponsiveMinWidth(600);
 
+        // Example 2 - Without main panel shift
+        /*
+        sp = new SideMenuPanel(this);
+        sp.setMain(null);
+        sp.setSide(sidebar);
+        sp.setMinWidth(55);
+        sp.setMaxWidth(150);
+        sp.setMainAnimationEnabled(true);
+        sp.setSpeed(4);
+         */
     }
 
     @SuppressWarnings("unchecked")
@@ -254,7 +266,7 @@ public class Test extends javax.swing.JFrame {
 
     private void menActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menActionPerformed
         // TODO add your handling code here:
-        sp.onSideMenu();
+        sp.toggleMenu();
     }//GEN-LAST:event_menActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
